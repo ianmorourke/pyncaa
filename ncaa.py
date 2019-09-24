@@ -11,7 +11,23 @@ class Card:
         self.value = value
 
     def show(self):
-        print("{} of {}".format(self.value, self.suit))
+        switcher = {1: "Ace",
+                    2: "Two",
+                    3: "Three",
+                    4: "Four",
+                    5: "Five",
+                    6: "Six",
+                    7: "Seven",
+                    8: "Eight",
+                    9: "Nine",
+                    10: "Ten",
+                    11: "Jack",
+                    12: "Queen",
+                    13: "King",
+                    14: "Joker"
+                    }
+        name = switcher.get(self.value)
+        print("{} of {}".format(name, self.suit))
 
 
 class Deck:
@@ -168,6 +184,18 @@ def main():
 
     # print(len(player1.hand))
     # print(len(opponent1.hand))
+
+    for i in range(HAND_SIZE - len(player1.hand)):
+        player1.draw(deck)
+
+    for i in range(HAND_SIZE - len(opponent1.hand)):
+        opponent1.draw(deck)
+
+    print("Your hand: ")
+    player1.show_player()
+
+    print("Your opponent's hand: ")
+    opponent1.show_player()
 
 
 if __name__ == "__main__":
